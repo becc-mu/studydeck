@@ -1,3 +1,7 @@
+# Studydeck
+
+This project is to clean up the unnecessary boilerplate files during create-react-app. This will make the application look good.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
