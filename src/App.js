@@ -1,6 +1,7 @@
 import React from 'react'
 import './normalize.css'
 import './App.css'
+import { CardPreview } from './components/CardPreview'
 
 function App() {
   return (
@@ -14,22 +15,9 @@ function App() {
       <main>
         <h3>Your Cards</h3>
         <div className="gridContainer">
-          <div className="title">
-            <h4 className="cardTerm">Term goes here</h4>
-            <div className="cardButtons">
-              <button type="button" className="tertiary">
-                show back
-              </button>
-              <div>
-                <button type="button" className="secondary">
-                  edit
-                </button>
-                <button type="button" className="secondary danger">
-                  delete
-                </button>
-              </div>
-            </div>
-          </div>
+          <CardPreview definition="quack" term="What goes a duck say?" />
+          <CardPreview definition="woof" term="What goes a dog say?" />
+          <CardPreview definition="moo" term="What goes a cow say?" />
         </div>
       </main>
     </div>

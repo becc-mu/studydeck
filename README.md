@@ -1,6 +1,6 @@
 # Studydeck
 
-This project is to clean up the unnecessary boilerplate files during create-react-app in an effort to create a responsive layout and integrated form.
+This project is to clean up the unnecessary boilerplate files during create-react-app in an effort to create a responsive layout and integrated form. I followed tutorial on [egghead.io](https://egghead.io/lessons/react-bootstrap-a-new-react-project-with-npx-and-create-react-app?pl=build-a-react-app-with-the-hooks-api-3010)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
