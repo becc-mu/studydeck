@@ -15,7 +15,7 @@ it('flips card when clicked', () => {
     <CardPreview term={expectedTerm} definition={expectedDef} />,
   )
   expect(getByText(expectedTerm)).toBeInTheDocument()
-
+  // Searchs reg exp for word show and case insensitive
   const flipButton = getByText(/show/i)
   fireEvent.click(flipButton)
   expect(getByText(expectedDef)).toBeInTheDocument()
