@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './normalize.css'
 import './App.css'
 import { CardPreview } from './components/CardPreview'
-
+import { getCards } from './services/cardService'
 function App() {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    fetch('/api/card')
-      .then((res) => res.json())
-      .then(setCards)
+    getCards().then(setCards)
   }, [])
   return (
     <div>
@@ -22,14 +20,13 @@ function App() {
       <main>
         <h3>Your Cards</h3>
         <div className="gridContainer">
-          {cards.length &&
-            cards.map((card) => (
-              <CardPreview
-                key={card.id}
-                term={card.term}
-                definition={card.definition}
-              />
-            ))}
+          {cards.map((card) => (
+            <CardPreview
+              key={card.id}
+              term={card.term}
+              definition={card.definition}
+            />
+          ))}
         </div>
       </main>
     </div>
