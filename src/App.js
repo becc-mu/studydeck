@@ -7,7 +7,7 @@ function App() {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    fetch('https://immediate-shorthaired-heath.glitch.me/api/card')
+    fetch('/api/card')
       .then((res) => res.json())
       .then(setCards)
   }, [])
@@ -21,8 +21,6 @@ function App() {
       </header>
       <main>
         <h3>Your Cards</h3>
-        {/* Temporary json output to view api results */}
-        <pre>{JSON.stringify(cards, null, 2)}</pre>
         <div className="gridContainer">
           {cards.length &&
             cards.map((card) => (
