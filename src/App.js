@@ -30,9 +30,7 @@ function App() {
       <main>
         <h3>Your Cards</h3>
         <div className="gridContainer">
-          <div>
-            <CardForm onSave={handleAdd} />
-          </div>
+          <CardForm onSave={handleAdd} />
           {cards.map(({ id, definition, term }) => (
             <CardPreview
               key={id}

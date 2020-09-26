@@ -9,7 +9,7 @@ export function saveCard(card) {
   return fetch("/api/card", {
     method: "POST",
     headers: {
-      "Content-type": "application/type",
+      "Content-type": "application/json",
     },
     body: JSON.stringify(card),
   }).then((res) => res.json());

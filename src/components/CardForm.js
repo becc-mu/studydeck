@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { saveCard } from "../services/cardService";
 
 export default function CardForm(props) {
-  const [term, setTerm] = useState("");
-  const [definition, setDefinition] = useState("");
+  const [term, setTerm] = useState('');
+  const [definition, setDefinition] = useState('');
 
   function handleSubmit(event) {
-    event.preventDefault();
-    saveCard({ term, definition }).then((card) => {
-      clearForm();
-      props.onSave && typeof props.onSave === "function" && props.onSave(card);
-    });
+    event.preventDefault()
+    saveCard({ term, definition }).then(card => {
+      clearForm()
+      props.onSave && typeof props.onSave === 'function' && props.onSave(card)
+    })
   }
   function clearForm() {
     setTerm('');
@@ -28,25 +28,24 @@ export default function CardForm(props) {
 
   return (
     <div className="tile">
-      <form onSubmit={handleSubmit} onReset={clearForm}>
+      <form onReset={clearForm} onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="card_term">Term</label>
+          <label htmlFor="card_term">term</label>
           <textarea
             id="card_term"
-            type="text"
             value={term}
             onChange={handleTermChange}
           ></textarea>
         </div>
         <div>
-          <label htmlFor="card_definition">Definition</label>
+          <label htmlFor="card_definition">definition</label>
           <textarea
             id="card_definition"
             value={definition}
             onChange={handleDefChange}
           ></textarea>
           <div>
-            <button className="primary" type="submit" onClick={handleSubmit}>
+            <button className="primary" type="submit">
               Save
             </button>
             <button className="secondary" type="reset">
