@@ -3,12 +3,18 @@ import './normalize.css'
 import './App.css'
 import { CardPreview } from './components/CardPreview'
 import { getCards } from './services/cardService'
+
 function App() {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
     getCards().then(setCards)
   }, [])
+
+  function handleRemove(id) {
+    setCards((existing) => existing.filter((c) => c.id !== id))
+  }
+
   return (
     <div>
       <header>
@@ -20,11 +26,13 @@ function App() {
       <main>
         <h3>Your Cards</h3>
         <div className="gridContainer">
-          {cards.map((card) => (
+          {cards.map(({ id, definition, term }) => (
             <CardPreview
-              key={card.id}
-              term={card.term}
-              definition={card.definition}
+              key={id}
+              id={id}
+              term={term}
+              definition={definition}
+              onRemove={handleRemove}
             />
           ))}
         </div>
