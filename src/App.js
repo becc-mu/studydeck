@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { Router } from '@reach/router'
 import './normalize.css'
 import './App.css'
-import { CardPreview } from './components/CardPreview'
 import { getCards } from './services/cardService'
-import CardForm from './components/CardForm'
+import { CardList } from './components/CardList'
+import { Practice } from './components/Practice'
 
 function App() {
   const [cards, setCards] = useState([])
@@ -32,18 +33,16 @@ function App() {
         <h2>Retention through reptition</h2>
       </header>
       <main>
-        <h3>Your Cards</h3>
-        <div className="gridContainer">
-          <CardForm onSave={handleAdd} />
-          {cards.map((card) => (
-            <CardPreview
-              key={card.id}
-              {...card}
-              onRemove={handleRemove}
-              onUpdate={handleUpdate}
-            />
-          ))}
-        </div>
+        <Router>
+          <CardList
+            path="/"
+            cards={cards}
+            onAdd={handleAdd}
+            onRemove={handleRemove}
+            onUpdate={handleUpdate}
+          />
+          <Practice path="/parctice" />
+        </Router>
       </main>
     </div>
   )
