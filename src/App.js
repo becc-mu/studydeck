@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from "react";
-import "./normalize.css";
-import "./App.css";
-import { CardPreview } from "./components/CardPreview";
-import { getCards } from "./services/cardService";
-import CardForm from "./components/CardForm";
+import React, { useEffect, useState } from 'react'
+import './normalize.css'
+import './App.css'
+import { CardPreview } from './components/CardPreview'
+import { getCards } from './services/cardService'
+import CardForm from './components/CardForm'
 
 function App() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([])
 
   useEffect(() => {
-    getCards().then(setCards);
-  }, []);
+    getCards().then(setCards)
+  }, [])
 
   function handleRemove(id) {
-    setCards((existing) => existing.filter((c) => c.id !== id));
+    setCards((existing) => existing.filter((c) => c.id !== id))
   }
 
   function handleAdd(card) {
-    setCards((existing) => [...existing, card]);
+    setCards((existing) => [...existing, card])
+  }
+
+  function handleUpdate(card) {
+    setCards((existing) => existing.map((c) => (c.id === card.id ? card : c)))
   }
   return (
     <div>
@@ -31,15 +35,18 @@ function App() {
         <h3>Your Cards</h3>
         <div className="gridContainer">
           <CardForm onSave={handleAdd} />
-          {cards.map(card => (
+          {cards.map((card) => (
             <CardPreview
-              key={card.id} {...card} onRemove={handleRemove}
+              key={card.id}
+              {...card}
+              onRemove={handleRemove}
+              onUpdate={handleUpdate}
             />
           ))}
         </div>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
