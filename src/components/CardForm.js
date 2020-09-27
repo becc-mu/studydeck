@@ -1,29 +1,30 @@
-import React, { useState } from "react";
-import { saveCard } from "../services/cardService";
+import React, { useState } from 'react'
+import { saveCard } from '../services/cardService'
 
-export default function CardForm(props) {
-  const [term, setTerm] = useState('');
-  const [definition, setDefinition] = useState('');
+export default function CardForm({ onSave, onCancel }) {
+  const [term, setTerm] = useState('')
+  const [definition, setDefinition] = useState('')
 
   function handleSubmit(event) {
     event.preventDefault()
-    saveCard({ term, definition }).then(card => {
+    saveCard({ term, definition }).then((card) => {
       clearForm()
-      props.onSave && typeof props.onSave === 'function' && props.onSave(card)
+      onSave && typeof onSave === 'function' && onSave(card)
     })
   }
   function clearForm() {
-    setTerm('');
-    setDefinition('');
+    setTerm('')
+    setDefinition('')
+    onCancel && typeof onCancel === 'function' && onCancel()
   }
   function handleTermChange(event) {
-    const { value } = event.target;
-    setTerm(value);
+    const { value } = event.target
+    setTerm(value)
   }
 
   function handleDefChange(event) {
-    const { value } = event.target;
-    setDefinition(value);
+    const { value } = event.target
+    setDefinition(value)
   }
 
   return (
@@ -55,5 +56,5 @@ export default function CardForm(props) {
         </div>
       </form>
     </div>
-  );
+  )
 }
