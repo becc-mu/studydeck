@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { destroyCard } from "../services/cardService";
 
-export function CardPreview(props) {
+export function CardPreview({ id, term, definition, onRemove }) {
   const [isFront, setIsFront] = useState(true);
 
   function handleCardFlip() {
@@ -10,22 +10,21 @@ export function CardPreview(props) {
 
   function handleDelete() {
     const confirm = window.confirm(
-      `Are you sure you wish to delete "${props.term}"?`
+      `Are you sure you wish to delete "${term}"?`
     );
     if (confirm) {
-      destroyCard(props.id).then(() => {
-        props.onRemove &&
-          typeof props.onRemove === "function" &&
-          props.onRemove(props.id);
+      destroyCard(id).then(() => {
+        onRemove &&
+          typeof onRemove === "function" &&
+          onRemove(id);
       });
     }
   }
 
   return (
     // Conditional css renderting
-
     <div className={`tile ${isFront ? '' : "back"}`}>
-      <h4 className="cardTerm">{isFront ? props.term : props.definition}</h4>
+      <h4 className="cardTerm">{isFront ? term : definition}</h4>
 
       <div className="cardButtons">
         <button type="button" className="tertiary" onClick={handleCardFlip}>
