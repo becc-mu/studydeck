@@ -41,7 +41,7 @@ function App() {
             onRemove={handleRemove}
             onUpdate={handleUpdate}
           />
-          <Practice path="/practice" />
+          <Practice path="/practice" cards={cards} />
         </Router>
       </main>
     </div>
